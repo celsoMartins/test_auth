@@ -9,7 +9,7 @@ require 'rspec/rails'
 
 Rails.root.glob('spec/support/*.rb').each { |f| require f }
 
-ActiveRecord::Migration.maintain_test_schema!
+ActiveRecord::Migration.maintain_test_schema! if Rails.env.test?
 
 RSpec.configure do |config|
   config.include AuthenticationHelper, type: :controller
